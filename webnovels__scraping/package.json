@@ -1,0 +1,20 @@
+{
+  "name": "webnovels__scraping",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "convert-array-to-csv": "^2.0.0",
+    "p-limit": "^6.1.0",
+    "papaparse": "^5.4.1",
+    "puppeteer": "^23.8.0",
+    "puppeteer-cluster": "^0.24.0"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
+}
