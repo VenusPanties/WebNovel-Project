@@ -57,18 +57,17 @@ Web Novel Reader is a full-stack web application for browsing and reading online
    - Run the frontend dev server: `npm run dev` (starts Vite on port 5173 by default; open the local address, e.g., `http://localhost:5173`).
 
 4. **Initial Data Population (Optional)**:
-   - In `webnovels__scraping/`, Node scripts scrape novel data and save it as CSV files (`NovelData.csv`, `ChapterData.csv`). Running these requires Node and Puppeteer:
-     ```bash
-     cd webnovels__scraping
-     npm install          # install Puppeteer and other libs
-     node novelList.js   # scrape list of novels into "Novels List.txt"
-     node a.js           # scrape novel details and chapters into CSV
-     ```
-   - Copy generated CSV files to `backend/csv/` if not already there.
-   - Send GET requests to backend endpoints:
+   - The CSV files (`NovelData.csv`, `ChapterData.csv`) are already provided in `backend/csv/`. If you are okay with the initial 50 novels and their chapters, send GET requests to these backend endpoints:
      - `http://localhost:5000/createNovelDb` – clears the novels collection and imports from `NovelData.csv`.
      - `http://localhost:5000/createChapterDb` – clears the chapters collection and imports from `ChapterData.csv`.
      - (Optional) `http://localhost:5000/rankDb` – recalculates and stores a ranking value for each novel.
+   - If you prefer to scrape new data manually:
+     - Navigate to the scraping directory: `cd webnovels__scraping`
+     - Install dependencies: `npm install`
+     - Send a GET request to the scraping endpoint to scrape a specified number of novels and chapters:
+       - `http://localhost:5000/ScrapeNovels/50/100` – scrapes 50 novels, up to 100 chapters each.
+     - Copy the generated `NovelData.csv` and `ChapterData.csv` to `backend/csv/`.
+     - Then send the above GET requests to populate the database.
 
 5. **Database Utilities (Advanced)**: The backend includes routes like `/deleteDb` (to drop collections), `/dbRanking`, `/dbBrowse` (to search), etc., which can be used or removed as needed.
 
